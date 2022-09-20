@@ -38,6 +38,14 @@ namespace trilha_net_api.Controllers
             return Ok(contact);
         }
 
+        [HttpGet("GetByName")]
+        public IActionResult GetContactsByName(string name)
+        {
+            var contacts = _context.Contacts.Where(x => x.Name.Contains(name));
+
+            return Ok(contacts);
+        }
+
         [HttpPut("{id}")]
         public IActionResult Update(int id, Contact contact)
         {
