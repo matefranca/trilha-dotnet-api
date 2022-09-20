@@ -55,5 +55,18 @@ namespace trilha_net_api.Controllers
 
             return Ok(tableContact);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var contact = _context.Contacts.Find(id);
+
+            if (contact == null)
+                return NotFound();
+
+            _context.Contacts.Remove(contact);
+            _context.SaveChanges();
+            return NoContent();
+        }
     }
 }
