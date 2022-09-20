@@ -24,7 +24,7 @@ namespace trilha_net_api.Controllers
         {
             _context.Add(contact);
             _context.SaveChanges();
-            return Ok(contact);
+            return CreatedAtAction(nameof(GetContactsById), new { id = contact.Id}, contact);
         }
 
         [HttpGet("{id}")]
